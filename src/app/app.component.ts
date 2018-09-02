@@ -21,7 +21,6 @@ export class AppComponent {
       this.languages = _.compact(_.uniq(_.map(this.moviesData, 'language')));
       this.countries = _.compact(_.uniq(_.map(this.moviesData, 'country')));
     });
-    // this.selectedLanguage = 'French';
     this.sortOrder = -1;
   }
   
