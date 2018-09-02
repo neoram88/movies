@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { GetMoviesDataService } from './get-movies-data.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  moviesData;
+  selectedLanguage;
+  sortOrder;
+  languages;
+  countries;
+
+  constructor(getMovieData: GetMoviesDataService) {
+    getMovieData.getMoviesList().subscribe((res) => {
+      this.moviesData = res;
+      this.languages = _.compact(_.uniq(_.map(this.moviesData, 'language')));
+      this.countries = _.compact(_.uniq(_.map(this.moviesData, 'country')));
+    });
+    // this.selectedLanguage = 'French';
+    this.sortOrder = -1;
+  }
+  
+
 }

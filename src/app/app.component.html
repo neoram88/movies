@@ -1,20 +1,45 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="appTitle">MOVIES</div>
+<div class="searchContainer">
+  <input autofocus class="searchBar" type="text" placeholder="Search by Movie Name" 
+  [(ngModel)]="searchText" autocomplete="on">
+  <div class="button-bar">
+      <button class="button" (click)="sortOrder=sortOrder*-1">
+          <i [ngClass]="{'descSortIcon':sortOrder==-1}"></i>
+          <i [ngClass]="{'ascSortIcon':sortOrder!=-1}"></i>
+          Year
+      </button>
+      <div class="filterButton" >
+          <!-- <i class="filterIcon"></i> -->
+          <ng-select placeholder="Language" bindLabel="Language" [(ngModel)]="selectedLanguage" class="customSelect">
+              <ng-option [value]="language" *ngFor="let language of languages">{{language}}</ng-option>
+          </ng-select>
+      </div>
+      <div class="filterButton">
+          <!-- <i class="filterIcon"></i> -->
+          <ng-select placeholder="Country" [(ngModel)]="selectedCountry" class="customSelect">
+              <ng-option [value]="country" *ngFor="let country of countries">{{country}}</ng-option>
+            </ng-select>
+      </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="movieContainer">
+  <div class="movieCard" *ngFor="let movie of moviesData | search : {itemProperty:'movie_title', searchString:searchText}
+  | search:{itemProperty:'language', searchString: selectedLanguage} 
+  | search:{itemProperty:'country', searchString: selectedCountry}
+  | sort: {property: 'title_year', order: sortOrder}">
+    <div class="movieTitle">{{movie.movie_title}} <ng-container *ngIf="movie.title_year!=''">({{movie.title_year}})</ng-container></div>
+
+    <div>DIRECTED BY: {{movie.director_name}}</div>
+    <div class="tags">
+        <span>{{movie.language}}</span>
+        <span>{{movie.content_rating}}</span>
+    </div>
+    <div class="tags">
+      {{movie.genres}}
+    </div>
+    <div class="IMDBlink">
+      <a href="{{movie.movie_imdb_link}}" target="_blank">More</a>
+    </div>
+  </div>
+</div>
 

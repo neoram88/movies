@@ -1,0 +1,144 @@
+
+.movieContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.movieCard{
+    flex: 1 10em;
+    /* background-image: linear-gradient(to bottom right, #0E7391 , #5B4791); */
+    background-color: #272C38;
+    margin: 1em;
+    box-shadow: 0 1px 2px #272C38;
+    font-family: 'Arvo', serif;
+    padding: 1em;
+    border-radius: 5px;
+}
+.movieCard *{
+    color:#dbdcde;
+    margin-bottom: 1rem;
+    -webkit-font-smoothing: antialiased;
+}
+
+.IMDBlink{
+    display: flex;
+    justify-content: flex-end;
+}
+.movieTitle{
+    font-family: 'Vesper Libre', serif;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.5rem;
+    font-size: 1.2rem;
+}
+.movieYear{
+    /* font-size: 1rem; */
+}
+
+.tags{
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    white-space: normal;
+    word-break: break-all;
+}
+
+.searchBar{
+    width: 96%;
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    border-style: none; 
+    background: transparent;
+    color: #ffffff;
+    border-bottom: 1pt solid white;
+}
+
+.searchBar::placeholder {
+    color: rgba(247, 243, 243, 0.33);
+}
+
+.searchContainer{
+    height: 6em;
+    margin-left: 1em;
+    background-color: #272C38;
+    margin: 1em;
+    padding: 1em;
+}
+
+.button{
+    height: 36px;
+    min-width: 10em;
+    box-shadow: 0 1px 3px #8C78FF;
+    background-color: #8C78FF;
+    border-style: none;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 0.2em;
+}
+.button span{
+    display: inline-block;
+}
+
+.descSortIcon{
+    content: url('../assets/sortDesc.png');
+    width: 4em;
+    height: 4em;
+    display: inline-block;
+}
+
+.ascSortIcon{
+    content: url('../assets/sortAsc.png');
+    width: 4em;
+    height: 4em;
+    display: inline-block;
+}
+
+.filterIcon{
+    content: url('../assets/filter.png');
+    width: 2em;
+    height: 2em;
+    display: inline-block;
+}
+
+.appTitle{
+    font-size: 4em;
+    font-weight: 500;
+    text-align: center;
+    color: #8C78FF;
+    font-family: 'Lato', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0.1rem;
+    /* text-shadow: 1px 2px 6px #4d33e2; */
+}
+
+.button-bar{
+    display: flex;
+    justify-content: space-around;
+}
+
+.filterButton{
+    position: relative;
+    width: 10em;
+}
+
+ng-select.customSelect {
+    border: 0px;
+    min-height: 0px;
+    border-radius: 0;
+    height: 3.5em;
+    padding: 0 0 0 0.2em;
+}
+
+ng-select.customSelect ::ng-deep .ng-select-container  {            
+    min-height: 0px;
+    border-radius: 0;
+    background-color: #8C78FF;
+    color: white;
+    border-style: none;
+}
+
+.ng-select.customSelect ::ng-deep  .ng-select-container .ng-value-container .ng-placeholder {
+    color: #ffffff;
+}
